@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Fungsi Eksponensial</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Tambahkan link font Poppins -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+        }
+
+        .typing {
+            font-size: 50px; /* Mengatur ukuran font yang lebih besar */
+            font-weight: bold;
+            background: linear-gradient(to right, #84A4FC, #2A64FC, #012582, #0A1C60); /* Warna gradasi */
+            -webkit-background-clip: text; /* Mengatur latar belakang klip pada teks */
+            -webkit-text-fill-color: transparent; /* Membuat teks transparan */
+            white-space: nowrap; /* Menghindari pemotongan teks */
+            overflow: hidden; /* Menyembunyikan teks yang belum ditampilkan */
+            border-right: 3px solid; /* Garis cursor */
+            animation: blink 0.75s step-end infinite; /* Efek berkedip */
+            margin-top: 150px; /* Mengurangi jarak atas */
+        }
+
+        @keyframes blink {
+            from, to {
+                border-color: transparent; /* Menghilangkan warna border */
+            }
+            50% {
+                border-color: black; /* Mengubah warna border saat berkedip */
+            }
+        }
+
+        .content-section {
+            padding: 10px 20px; /* Jarak dari navbar */
+            text-align: center; /* Memusatkan teks */
+        }
+
+        .content-section p {
+            margin-top: 10px; /* Memberikan jarak atas yang lebih kecil */
+            font-size: 16px; /* Ukuran font paragraf */
+            line-height: 1.5; /* Jarak antar baris */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
+            <h1 class="navbar-title">Eksponensial</h1>
+        </div>
+
+        <ul class="menu">
+            <li><a href="#penjelasan" class="menu-item">Penjelasan</a></li>
+            <li><a href="#tentang" class="menu-item">Tentang</a></li>
+            <li><a href="#rumus" class="menu-item">Rumus</a></li>
+            <li><a href="#contoh" class="menu-item">Contoh</a></li>
+            <li><a href="#kalkulator" class="menu-item">Kalkulator</a></li>
+            <li><a href="#anggota" class="menu-item">Anggota</a></li>
+        </ul>
+
+        <div class="logo-container">
+            <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
+            <h1 class="navbar-title">Kalkulus</h1>
+        </div>
+    </nav>
+
+    <section id="content" class="content-section">
+        <div class="typing" id="typing-text"></div>
+    </section>
+
+    <section id="content" class="content-section">
+        <p>
+            Panduan lengkap mengenai fungsi eksponensial yang mencakup penjelasan tentang fungsi dasar seperti pertumbuhan eksponensial dan peluruhan. Situs ini menyediakan rumus-rumus penting, grafik fungsi, contoh soal, serta kalkulator interaktif yang dapat memudahkan anda.
+        </p>
+    </section>
+
+    <script>
+        const texts = ["Projek Mata Kuliah Kalkulus", "Materi Fungsi Eksponensial"];
+        let currentIndex = 0;
+        let typingSpeed = 100; // Kecepatan mengetik
+        let pauseTime = -1000; // Waktu jeda antara teks
+
+        // Fungsi untuk mengetik teks
+        function typeWriter(text, elementId) {
+            let i = 0;
+            document.getElementById(elementId).innerHTML = ""; // Kosongkan teks sebelumnya
+
+            function type() {
+                if (i < text.length) {
+                    document.getElementById(elementId).innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, typingSpeed);
+                } else {
+                    setTimeout(() => {
+                        deleteWriter(text, elementId);
+                    }, pauseTime); // Jeda sebelum menghapus
+                }
+            }
+            type();
+        }
+
+        // Fungsi untuk menghapus teks
+        function deleteWriter(text, elementId) {
+            let i = text.length;
+
+            function deleteText() {
+                if (i > 0) {
+                    document.getElementById(elementId).innerHTML = text.substring(0, i);
+                    i--;
+                    setTimeout(deleteText, typingSpeed);
+                } else {
+                    currentIndex = (currentIndex + 1) % texts.length; // Beralih ke teks berikutnya
+                    setTimeout(() => {
+                        typeWriter(texts[currentIndex], elementId);
+                    }, pauseTime); // Jeda sebelum mengetik teks berikutnya
+                }
+            }
+            deleteText();
+        }
+
+        // Memulai animasi typing
+        typeWriter(texts[currentIndex], "typing-text");
+    </script>
+</body>
+</html>
