@@ -11,9 +11,23 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #ffffff;
+            text-align: center;
+            margin-top: 50px;
         }
 
-    
+        /* Membuat teks gradien */
+        .typing-gradient {
+            background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
+            -webkit-background-clip: text;
+            color: black;
+            display: inline-block;
+        }
+
+        .typing {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
         .content-section {
             padding: 10px 20px;
             text-align: center;
@@ -23,42 +37,6 @@
             margin-top: 10px;
             font-size: 16px;
             line-height: 1.5;
-        }
-
-        .typing {
-            font-size: 50px;
-            font-weight: bold;
-        }
-
-        /* Media Queries untuk responsivitas */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column; /* Menu dalam kolom pada perangkat kecil */
-                align-items: flex-start; /* Rata kiri */
-            }
-
-            .navbar .menu {
-                flex-direction: column; /* Menu dalam kolom */
-                gap: 10px; /* Jarak antar menu */
-            }
-
-            .typing {
-                font-size: 30px; /* Ukuran font lebih kecil pada perangkat kecil */
-            }
-
-            .content-section p {
-                font-size: 14px; /* Ukuran font paragraf lebih kecil */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .typing {
-                font-size: 24px; /* Ukuran font lebih kecil lagi pada perangkat sangat kecil */
-            }
-
-            .content-section p {
-                font-size: 12px; /* Ukuran font paragraf lebih kecil */
-            }
         }
     </style>
 </head>
@@ -70,12 +48,12 @@
         </div>
 
         <ul class="menu">
-            <li><a href="index.html" class="menu-item">Penjelasan</a></li>
-            <li><a href="tentang.html" class="menu-item">Tentang</a></li>
-            <li><a href="#rumus" class="menu-item">Rumus</a></li>
-            <li><a href="#contoh" class="menu-item">Contoh</a></li>
-            <li><a href="#kalkulator" class="menu-item">Kalkulator</a></li>
-            <li><a href="#anggota" class="menu-item">Anggota</a></li>
+            <li><a href="index.html" class="menu-item">Beranda</a></li>
+            <li><a href="penjelasan.html" class="menu-item">Penjelasan</a></li>
+            <li><a href="sifat.html" class="menu-item">Sifat</a></li>
+            <li><a href="contoh.html" class="menu-item">Contoh</a></li>
+            <li><a href="kalkulator.html" class="menu-item">Kalkulator</a></li>
+            <li><a href="anggota.html" class="menu-item">Anggota</a></li>
         </ul>
 
         <div class="logo-container">
@@ -85,25 +63,27 @@
     </nav>
 
     <section id="content" class="content-section" style="margin-top: 100px;">
-        <div id="simpleUsage" class="typing"></div>
+        <div id="simpleUsage" class="typing typing-gradient"></div>
     </section>
 
     <section id="content" class="content-section">
         <p>
-            Panduan lengkap mengenai fungsi eksponensial yang mencakup penjelasan tentang fungsi dasar seperti pertumbuhan eksponensial dan peluruhan. Situs ini menyediakan rumus-rumus penting, grafik fungsi, contoh soal, serta kalkulator interaktif yang dapat memudahkan anda.
+            Panduan lengkap mengenai fungsi eksponensial yang mencakup penjelasan tentang fungsi dasar seperti pertumbuhan eksponensial dan peluruhan. Situs ini menyediakan sifat-sifat penting, grafik fungsi, contoh soal, serta kalkulator interaktif yang dapat memudahkan anda.
         </p>
     </section>
 
     <script src="https://unpkg.com/typeit@8.8.7/dist/index.umd.js"></script>
     <script>
         new TypeIt("#simpleUsage", {
-            strings: ["Look, it's rainbow text!"],
+            strings: ["Projek Mata Kuliah Kalkulus", "Materi Fungsi Eksponensial"],
             speed: 150,
             waitUntilVisible: true,
             loop: true,
-            afterStep: function (instance) {
-                instance.getElement().style.color = "#2a64fc";
-            },
+            breakLines: false,
+            afterComplete: function (instance) {
+                // Menambahkan kembali kelas untuk menjaga gradien aktif
+                instance.getElement().classList.add("typing-gradient");
+            }
         }).go();
     </script>
 </body>

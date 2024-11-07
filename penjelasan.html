@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .content-section {
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Gaya untuk grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .box {
+            background-color: white;
+            text-align: left;
+            padding: 20px;
+            border: 2px solid #2A64FC;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .box h3 {
+            margin-top: 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Gaya untuk teks gradasi */
+        .typing-gradient {
+            background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin-bottom: 1px; /* Menambah jarak bawah pada judul */
+        }
+
+        .content-section p {
+            margin-top: 10px;
+            margin-bottom: 20px; /* Menambah jarak bawah pada paragraf */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
+            <h1 class="navbar-title">Eksponensial</h1>
+        </div>
+
+        <ul class="menu">
+            <li><a href="index.html" class="menu-item">Beranda</a></li>
+            <li><a href="penjelasan.html" class="menu-item">Penjelasan</a></li>
+            <li><a href="sifat.html" class="menu-item">Sifat</a></li>
+            <li><a href="contoh.html" class="menu-item">Contoh</a></li>
+            <li><a href="kalkulator.html" class="menu-item">Kalkulator</a></li>
+            <li><a href="anggota.html" class="menu-item">Anggota</a></li>
+        </ul>
+
+        <div class="logo-container">
+            <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
+            <h1 class="navbar-title">Kalkulus</h1>
+        </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <section class="content-section">
+        <h2 class="typing-gradient">Tentang Proyek</h2>
+        <p>Berikut adalah informasi tentang fungsi dan konten website ini:</p>
+        
+        <div class="grid-container">
+            <div class="box">
+                <h3>Apa itu Fungsi Eksponensial?</h3>
+                <p>Fungsi eksponensial adalah fungsi di mana variabelnya berada pada pangkat. Berbeda dengan fungsi biasa yang memiliki variabel pada basis, dalam fungsi eksponensial, konstanta menjadi basis, sementara variabel berada pada eksponen.</p>
+            </div>
+            <div class="box">
+                <h3>Bentuk umum fungsi eksponensial</h3>
+                <p>Fungsi eksponensial memiliki bentuk umum y = a * b<sup>x</sup>, di mana:</p>  
+                <ul>
+                    <li>a adalah konstanta (faktor pengali).</li>
+                    <li>b adalah basis eksponensial (biasanya bilangan positif).</li>
+                    <li>x adalah variabel bebas.</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>Rumus</h3>
+                <p>Jika a<sup>f(x)</sup> = 1 maka f(x) = 0</p>
+                <p>Jika a<sup>f(x)</sup> = a<sup>n</sup>, maka f(x) = n</p>
+                <p>Jika a<sup>f(x)</sup> = a<sup>g(x)</sup>, maka f(x) = g(x)</p>
+                <p>Jika a<sup>f(x)</sup> = b<sup>f(x)</sup>, maka f(x) = 0</p>         
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="typing-gradient">Cara Menggambarkan Grafik</h2>
+        <p> Cara membuat grafik fungsi eksponen terbagi menjadi 4 langkah, yaitu:</p>
+
+        <div class="box">
+            <p><b>1. Ambil Titik x (Absis) Secara Sembarang</b></p>
+            <p>Titik absis (x) memiliki nilai mulai dari bilangan negatif ke positif yang urut. Pemilihan nilai x akan membantu kita dalam mendapat grafik fungsi eksponen dengan baik. Misalnya, nilai absis x = -2, -1, 0, 1, dan 2.</p>
+            
+            <p><b>2. Tentukan Nilai y (Ordinat) Sekaligus Titik Koordinat</b></p>
+            <p>Dari titik absis yang sudah ditentukan di atas, maka didapat nilai x dan y sebagai berikut:</p>
+            <p>x = -2</p>
+            <p>grafik fungsi eksponen y=2 pangkat x</p>
+            <p>x = -2, y = 2⁽⁻²⁾ = ¼, Titik koordinat = (-2, ¼)</p>
+            <p>x = -1, y = 2⁽⁻¹⁾ = ½, Titik koordinat = (-1, ½)</p>
+            <p>x = 0, y = 2⁽⁰⁾ = 1, Titik koordinat = (0, 1)</p>
+            <p>x = 1, y = 2¹ = 2, Titik koordinat = (1, 2)</p>
+            <p>x = 2, y = 2² = 4, Titik koordinat = (2, 4)</p>
+            <p><b>3. Tandai Letak Titik Koordinat di Bidang Kartesius</b></p>
+            <p>Setelah mendapat titik koordinat di atas, cukup tandai letak titik koordinat tersebut di bidang kartesius.</p>
+            <p><b>4. Hubungkan Titik Koordinat</b></p>
+            <p>Setelah semua titik koordinat ditandai, hubungkan titik-titik tersebut untuk membentuk kurva.</p>
+            <p>Perbedaan grafik fungsi eksponen dan logaritma terletak di range grafik fungsi eksponen yang selalu positif, sementara nilai y juga positif. Pada fungsi logaritma, domainnya yang selalu bernilai positif.</p>
+        </div>
+    </section>
+
+    <!-- Footer Copyright -->
+    <footer style="background-color: #f1f1f1; padding: 20px; text-align: center; margin-top: 30px; font-size: 14px; color: #333;">
+        <p>&copy; 2024 Eksponensial dan Kalkulus. All rights reserved.</p>
+    </footer>
+</body>
+</html>
