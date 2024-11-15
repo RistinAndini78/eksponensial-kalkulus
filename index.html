@@ -13,14 +13,51 @@
             background-color: #ffffff;
             text-align: center;
             margin-top: 50px;
+            position: relative; /* Untuk menampung elemen dekoratif */
+            overflow: hidden;
+        }
+
+        /* Background dekoratif */
+        .background-decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1; /* Supaya berada di belakang konten */
+        }
+
+        .background-decorations::before, .background-decorations::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
+        }
+
+        .background-decorations::before {
+            width: 400px;
+            height: 400px;
+            top: 20%;
+            left: -50px;
+        }
+
+        .background-decorations::after {
+            width: 300px;
+            height: 300px;
+            bottom: 15%;
+            right: -70px;
         }
 
         /* Membuat teks gradien */
         .typing-gradient {
             background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
             -webkit-background-clip: text;
-            color: black;
+            -webkit-text-fill-color: transparent;
             display: inline-block;
+            font-size: 2em;
+            font-weight: 600;
         }
 
         .typing {
@@ -31,16 +68,34 @@
         .content-section {
             padding: 10px 20px;
             text-align: center;
+            margin-top: -5%; /* Mengurangi jarak dari atas */
         }
 
         .content-section p {
-            margin-top: 10px;
-            font-size: 16px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 10px; /* Sedikit menggeser teks ke atas */
+            font-size: 14px;
             line-height: 1.5;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
+    <!-- Elemen dekoratif latar belakang -->
+    <div class="background-decorations"></div>
+
     <nav class="navbar">
         <div class="logo-container">
             <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
@@ -56,17 +111,20 @@
             <li><a href="anggota.html" class="menu-item">Anggota</a></li>
         </ul>
 
-        <div class="logo-container">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div class="logo-container sm-hidden">
             <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
             <h1 class="navbar-title">Kalkulus</h1>
         </div>
     </nav>
 
-    <section id="content" class="content-section" style="margin-top: 100px;">
+    <section id="content" class="content-section" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <div id="simpleUsage" class="typing typing-gradient"></div>
-    </section>
-
-    <section id="content" class="content-section">
         <p>
             Panduan lengkap mengenai fungsi eksponensial yang mencakup penjelasan tentang fungsi dasar seperti pertumbuhan eksponensial dan peluruhan. Situs ini menyediakan sifat-sifat penting, grafik fungsi, contoh soal, serta kalkulator interaktif yang dapat memudahkan anda.
         </p>
@@ -81,10 +139,14 @@
             loop: true,
             breakLines: false,
             afterComplete: function (instance) {
-                // Menambahkan kembali kelas untuk menjaga gradien aktif
                 instance.getElement().classList.add("typing-gradient");
             }
         }).go();
     </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Copyright <b>Kelompok 4</b>. All Rights Reserved</p>
+    </footer>
 </body>
 </html>
