@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator GeoGebra</title>
+    <title>Kalkulator Fungsi Eksponensial</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -14,30 +16,154 @@
             margin-top: 50px;
         }
 
-        .geogebra-container {
+        /* nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
             width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            height: 600px;
-            border: 2px solid #2A64FC;
-            border-radius: 10px;
+            z-index: 10;
+        } */
+
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
-        .result-container {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #2A64FC;
+        .logo-container img {
+            margin-right: 10px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu-item {
+            color: #000000;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s;
+        }
+
+        .calculator-title {
+            font-size: 32px; 
+            font-weight: bold;
+            color: #000000;
+            margin-top: 100px; 
+            margin-bottom: 10px; 
+        }
+
+       
+        .calculator {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            max-width: 800px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .calculator input[type="number"] {
+            width: 60%;
+            padding: 12px;
+            font-size: 18px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .calculator input[type="number"]:focus {
+            outline: none;
+            border-color: #ffbb33;
+            background-color: #ffffff;
+        }
+
+        .calculator button {
+            padding: 12px 30px;
+            font-size: 18px;
+            margin: 10px 5px 0;
+            border-radius: 8px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .calculator button#hitung {
+            background-color: #2196f3;
+        }
+
+        .calculator button#hitung:hover {
+            background-color: #1976d2;
+        }
+
+        .calculator button#reset {
+            background-color: #f44336;
+        }
+
+        .calculator button#reset:hover {
+            background-color: #d32f2f;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        
+        .geogebra-embed {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 600px; 
+            height: 400px; 
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             margin: 20px auto;
-            background-color: #f9f9f9;
+        }
+
+        .geogebra-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .geogebra-title {
+            font-size: 32px; 
+            font-weight: bold;
+            margin-top: 40px; 
+            color: #333;
+        }
+
+        
+        .typing-gradient {
+            background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin-bottom: 1px;
         }
     </style>
-    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
 </head>
+
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo-container">
             <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
@@ -53,14 +179,72 @@
             <li><a href="anggota.html" class="menu-item">Anggota</a></li>
         </ul>
 
+        <div class="logo-container">
+            <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
+            <h1 class="navbar-title">Kalkulus</h1>
+        </div>
     </nav>
 
-    
+    <h1 class="typing-gradient calculator-title">Kalkulator Fungsi Eksponensial</h1>
+    <p>Hitung menggunakan kalkulator dibawah ini :</p>
 
-    
+    <div class="calculator">
+        <p>Masukkan nilai x untuk menghitung <strong>f(x) = 2<sup>x</sup></strong></p>
 
-       
+        <label for="xInput">Masukkan nilai x:</label>
+        <input type="number" id="xInput" placeholder="Masukkan nilai x" />
+
+        <button id="hitung" onclick="hitungEksponen()">Hitung</button>
+        <button id="reset" onclick="resetForm()">Reset</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <h1 class="typing-gradient geogebra-title">Kalkulator Grafik</h2>
+    <p>Anda bisa menggambarkan grafiknya menggunakan kalkulator grafik dibawah ini :</p>
+    <div class="geogebra-embed">
+        <iframe src="https://www.geogebra.org/graphing" width="100%" height="100%" title="GeoGebra Graphing Calculator"></iframe>
+    </div>
+
+    <script>
+        function hitungEksponen() {
+            const xInput = document.getElementById('xInput').value;
+            const resultDiv = document.getElementById('result');
+
+            if (xInput === '') {
+                resultDiv.innerHTML = '<span class="error">Masukkan nilai x terlebih dahulu!</span>';
+                return;
+            }
+
+            const x = parseFloat(xInput);
+
+            if (isNaN(x)) {
+                resultDiv.innerHTML = '<span class="error">Nilai x harus berupa angka!</span>';
+                return;
+            }
+
+            const a = 2;
+            const hasil = Math.pow(a, x);
+
+            if (hasil > Number.MAX_SAFE_INTEGER) {
+                resultDiv.innerHTML = '<span class="error">Hasil terlalu besar untuk ditampilkan!</span>';
+                return;
+            }
+
+            resultDiv.innerHTML = 'Hasil dari 2<sup>${x}</sup> adalah <span class="success"><strong>${hasil}</strong></span>';
+        }
+
+        function resetForm() {
+            document.getElementById('xInput').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
     </script>
 
+     <!-- Footer Copyright -->
+     <footer style="background-color: #f1f1f1; padding: 20px; text-align: center; margin-top: 30px; font-size: 14px; color: #333;">
+        <p>&copy; Copyright <b>Kelompok 4</b>. All Rights Reserved</p>
+    </footer>
+
 </body>
+
 </html>

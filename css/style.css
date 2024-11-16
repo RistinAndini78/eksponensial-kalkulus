@@ -80,6 +80,8 @@ body {
     display: flex;
 }
 
+
+
 /* Responsiveness */
 @media (max-width: 768px) {
     .navbar {
