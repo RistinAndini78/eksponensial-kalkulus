@@ -15,6 +15,78 @@
             text-align: center;
             margin-top: 50px;
         }
+        /* Background dekoratif */
+        .background-decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1; /* Supaya berada di belakang konten */
+        }
+        .background-decorations::before, .background-decorations::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
+        }
+        .background-decorations::before {
+            width: 600px;
+            height: 600px;
+            top: -100px;
+            left: -150px;
+        }
+        .background-decorations::after {
+            width: 500px;
+            height: 500px;
+            bottom: -100px;
+            right: -120px;
+        }
+        /* Elemen dekorasi tambahan */
+        .additional-decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2; /* Tetap di belakang konten utama */
+        }
+        .additional-decorations::before, .additional-decorations::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 145, 234, 0.1); /* Warna biru muda transparan */
+            transform: rotate(45deg);
+            border-radius: 10px;
+        }
+        .additional-decorations::before {
+            width: 300px;
+            height: 20px;
+            top: 10%;
+            left: 20%;
+        }
+
+        .additional-decorations::after {
+            width: 150px;
+            height: 150px;
+            bottom: 10%;
+            right: 10%;
+            transform: rotate(-45deg);
+        }
+
+        /* Pola SVG */
+        .svg-pattern {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            z-index: -1; /* Tetap di belakang */
+            opacity: 0.5;
+        }
 
         /* nav {
             display: flex;
@@ -163,6 +235,9 @@
 </head>
 
 <body>
+    <!-- Elemen dekoratif latar belakang -->
+    <div class="background-decorations"></div>
+    <div class="additional-decorations"></div>
 
     <nav class="navbar">
         <div class="logo-container">

@@ -14,6 +14,79 @@
             margin-top: 50px;
         }
 
+        /* Background dekoratif */
+        .background-decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1; /* Supaya berada di belakang konten */
+        }
+        .background-decorations::before, .background-decorations::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
+        }
+        .background-decorations::before {
+            width: 600px;
+            height: 600px;
+            top: -100px;
+            left: -150px;
+        }
+        .background-decorations::after {
+            width: 500px;
+            height: 500px;
+            bottom: -100px;
+            right: -120px;
+        }
+        /* Elemen dekorasi tambahan */
+        .additional-decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2; /* Tetap di belakang konten utama */
+        }
+        .additional-decorations::before, .additional-decorations::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 145, 234, 0.1); /* Warna biru muda transparan */
+            transform: rotate(45deg);
+            border-radius: 10px;
+        }
+        .additional-decorations::before {
+            width: 300px;
+            height: 20px;
+            top: 10%;
+            left: 20%;
+        }
+
+        .additional-decorations::after {
+            width: 150px;
+            height: 150px;
+            bottom: 10%;
+            right: 10%;
+            transform: rotate(-45deg);
+        }
+
+        /* Pola SVG */
+        .svg-pattern {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            z-index: -1; /* Tetap di belakang */
+            opacity: 0.5;
+        }
+
         .content-section {
             padding: 20px;
             text-align: center;
@@ -31,7 +104,7 @@
         .box {
             background-color: white;
             text-align: left;
-            padding: 20px;
+            padding: 10px;
             border: 2px solid #2A64FC;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -40,7 +113,7 @@
         .box h3 {
             margin-top: 0;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         /* Gaya untuk teks gradasi */
@@ -54,11 +127,22 @@
 
         .content-section p {
             margin-top: 10px;
-            margin-bottom: 20px; /* Menambah jarak bawah pada paragraf */
+            margin-bottom: 10px; /* Menambah jarak bawah pada paragraf */
         }
     </style>
 </head>
 <body>
+    <!-- Elemen dekoratif latar belakang -->
+    <div class="background-decorations"></div>
+    <div class="additional-decorations"></div>
+
+    <!-- Pola SVG -->
+    <svg class="svg-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <circle cx="10" cy="10" r="8" fill="rgba(2, 102, 209, 0.2)" />
+        <circle cx="30" cy="30" r="10" fill="rgba(0, 145, 234, 0.2)" />
+        <circle cx="70" cy="70" r="12" fill="rgba(84, 164, 252, 0.2)" />
+    </svg>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo-container">
@@ -109,7 +193,6 @@
             </div>
         </div>
     </section>
-
     <section class="content-section">
         <h2 class="typing-gradient">Cara Menggambarkan Grafik</h2>
         <p> Cara membuat grafik fungsi eksponen terbagi menjadi 4 langkah, yaitu:</p>
@@ -127,15 +210,18 @@
             <p>x = 0, y = 2⁽⁰⁾ = 1, Titik koordinat = (0, 1)</p>
             <p>x = 1, y = 2¹ = 2, Titik koordinat = (1, 2)</p>
             <p>x = 2, y = 2² = 4, Titik koordinat = (2, 4)</p>
+            
             <p><b>3. Tandai Letak Titik Koordinat di Bidang Kartesius</b></p>
             <p>Setelah mendapat titik koordinat di atas, cukup tandai letak titik koordinat tersebut di bidang kartesius.</p>
+            
             <p><b>4. Hubungkan Titik Koordinat</b></p>
             <p>Setelah semua titik koordinat ditandai, hubungkan titik-titik tersebut untuk membentuk kurva.</p>
+            
             <p>Perbedaan grafik fungsi eksponen dan logaritma terletak di range grafik fungsi eksponen yang selalu positif, sementara nilai y juga positif. Pada fungsi logaritma, domainnya yang selalu bernilai positif.</p>
         </div>
     </section>
 
-    <!-- Footer Copyright -->
+    <!-- Footer -->
     <footer style="background-color: #f1f1f1; padding: 20px; text-align: center; margin-top: 30px; font-size: 14px; color: #333;">
         <p>&copy; Copyright <b>Kelompok 4</b>. All Rights Reserved</p>
     </footer>
