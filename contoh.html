@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            margin: 20px;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        /* Background dekoratif */
+        .background-decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1; /* Supaya berada di belakang konten */
+        }
+        .background-decorations::before, .background-decorations::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
+        }
+        .background-decorations::before {
+            width: 600px;
+            height: 600px;
+            top: -100px;
+            left: -150px;
+        }
+        .background-decorations::after {
+            width: 500px;
+            height: 500px;
+            bottom: -100px;
+            right: -120px;
+        }
+        /* Elemen dekorasi tambahan */
+        .additional-decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2; /* Tetap di belakang konten utama */
+        }
+        .additional-decorations::before, .additional-decorations::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 145, 234, 0.1); /* Warna biru muda transparan */
+            transform: rotate(45deg);
+            border-radius: 10px;
+        }
+        .additional-decorations::before {
+            width: 300px;
+            height: 20px;
+            top: 10%;
+            left: 20%;
+        }
+
+        .additional-decorations::after {
+            width: 150px;
+            height: 150px;
+            bottom: 10%;
+            right: 10%;
+            transform: rotate(-45deg);
+        }
+
+        /* Pola SVG */
+        .svg-pattern {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            z-index: -1; /* Tetap di belakang */
+            opacity: 0.5;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            margin-top: 50px
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 2px solid #2A64FC;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .question h2 {
+            margin: 0 0 10px;
+            color: #012582;
+        }
+
+        .answer {
+            margin-top: 10px;
+            background-color: #e6f7ff;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #2A64FC;
+        }
+
+        canvas {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Elemen dekoratif latar belakang -->
+    <div class="background-decorations"></div>
+    <div class="additional-decorations"></div>
+    
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
+            <h1 class="navbar-title">Eksponensial</h1>
+        </div>
+
+        <ul class="menu">
+            <li><a href="index.html" class="menu-item">Beranda</a></li>
+            <li><a href="penjelasan.html" class="menu-item">Penjelasan</a></li>
+            <li><a href="sifat.html" class="menu-item">Sifat</a></li>
+            <li><a href="contoh.html" class="menu-item">Contoh</a></li>
+            <li><a href="kalkulator.html" class="menu-item">Kalkulator</a></li>
+            <li><a href="anggota.html" class="menu-item">Anggota</a></li>
+        </ul>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div class="logo-container sm-hidden">
+            <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
+            <h1 class="navbar-title">Kalkulus</h1>
+        </div>
+    </nav>
+    <div class="content">
+        <h1>Contoh Soal</h1>
+
+        <!-- Soal 1 -->
+        <div class="question">
+            <h2>Soal 1</h2>
+            <p>Diberikan 𝑓(𝑥) = 2<sup>2𝑥−1</sup>, carilah nilai dari 𝑓(2) dan 𝑓(½) adalah...</p>
+            <div class="answer">
+                <b>Jawaban:</b>  
+                <br>f(2) = 2<sup>2(2)-1</sup> = 2<sup>4-1</sup> = 2<sup>3</sup> = 8 <br>
+                𝑓(½) = 2<sup>2(½)-1</sup> = 2<sup>1-1</sup> = 2<sup>0</sup> = 1 <br>
+                <b>Pembahasan:</b> Substitusi nilai x ke dalam fungsi 𝑓(𝑥).
+            </div>
+        </div>
+
+        <!-- Soal 2 -->
+        <div class="question">
+            <h2>Soal 2</h2>
+            <p>Lukislah grafik fungsi 𝑦 = 2𝑥 dengan 𝑥 ∈ R</p>
+            <div class="answer">
+                <b>Jawaban:</b> <br>Titik-titik grafik:  
+                <br>x = -2, y = 2⁻² = ¼<br>
+                x = -1, y = 2⁻¹ = ½ <br>  
+                x = 0, y = 2⁰ = 1 <br> 
+                x = 1, y = 2¹ = 2 <br> 
+                x = 2, y = 2² = 4 <br>  
+                <b>Pembahasan:</b> Menghitung tiap titik grafik.
+                <canvas id="grafikEksponen"></canvas>
+            </div>
+        </div>
+
+        <!-- Soal 3 -->
+        <div class="question">
+            <h2>Soal 3</h2>
+            <p>Tentukan penyelesaian f(x) = x³ untuk x = 3</p>
+            <div class="answer">
+                <b>Jawaban:</b> <br>f(3) = 3³ = 27 <br>
+                <b>Pembahasan:</b> <br>Substitusi x = 3 ke dalam fungsi 𝑓(𝑥) = x³.
+            </div>
+        </div>
+
+        <!-- Soal 4 -->
+        <div class="question">
+            <h2>Soal 4</h2>
+            <p>Tentukan penyelesaian f(x) = x² + 1 jika x = 5</p>
+            <div class="answer">
+                <b>Jawaban:</b> <br>f(5) = 5² + 1 = 25 + 1 = 26<br> 
+                <b>Pembahasan:</b> <br>Substitusi x = 5 ke dalam fungsi 𝑓(𝑥) = x² + 1.
+            </div>
+        </div>
+    </div>
+
+    <!-- Grafik dengan Chart.js -->
+    <script>
+        // Data untuk grafik y = 2^x
+        const xValues = [-2, -1, 0, 1, 2];
+        const yValues = xValues.map(x => Math.pow(2, x)); // Hitung nilai y untuk setiap x
+
+        const config = {
+            type: 'line',
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: 'y = 2ˣ',
+                    data: yValues,
+                    borderColor: '#2A64FC',
+                    backgroundColor: 'rgba(42, 100, 252, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'x'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'y'
+                        }
+                    }
+                }
+            }
+        };
+        // Render grafik
+        const ctx = document.getElementById('grafikEksponen').getContext('2d');
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>
