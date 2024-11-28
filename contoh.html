@@ -14,6 +14,8 @@
             margin: 20px;
             padding: 0;
             line-height: 1.6;
+            position: relative; /* Agar konten tidak tumpang tindih dengan footer */
+            min-height: 100vh; /* Membuat tinggi halaman minimal 100% */
         }
         
         /* Background dekoratif */
@@ -93,13 +95,13 @@
             max-width: 800px;
             margin: auto;
             padding: 20px;
-            margin-top: 50px
+            margin-top: 50px;
+            padding-bottom: 100px; /* Memberikan ruang untuk footer */
         }
 
         h1 {
             text-align: center;
             color: #000000;
-
         }
 
         .question {
@@ -127,6 +129,19 @@
             margin-top: 20px;
             max-width: 100%;
         }
+
+        footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
     </style>
 </head>
 <body>
@@ -206,59 +221,66 @@
             <h2>Soal 4</h2>
             <p>Tentukan penyelesaian f(x) = x² + 1 jika x = 5</p>
             <div class="answer">
-                <b>Jawaban:</b> <br>f(5) = 5² + 1 = 25 + 1 = 26<br> 
-                <b>Pembahasan:</b> <br>Substitusi x = 5 ke dalam fungsi 𝑓(𝑥) = x² + 1.
+                <div class="answer">
+                    <b>Jawaban:</b> <br>f(5) = 5² + 1 = 25 + 1 = 26<br> 
+                    <b>Pembahasan:</b> <br>Substitusi x = 5 ke dalam fungsi 𝑓(𝑥) = x² + 1.
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Grafik dengan Chart.js -->
-    <script>
-        // Data untuk grafik y = 2^x
-        const xValues = [-2, -1, 0, 1, 2];
-        const yValues = xValues.map(x => Math.pow(2, x)); // Hitung nilai y untuk setiap x
-
-        const config = {
-            type: 'line',
-            data: {
-                labels: xValues,
-                datasets: [{
-                    label: 'y = 2ˣ',
-                    data: yValues,
-                    borderColor: '#2A64FC',
-                    backgroundColor: 'rgba(42, 100, 252, 0.2)',
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    }
+    
+        <!-- Grafik dengan Chart.js -->
+        <script>
+            // Data untuk grafik y = 2^x
+            const xValues = [-2, -1, 0, 1, 2];
+            const yValues = xValues.map(x => Math.pow(2, x)); // Hitung nilai y untuk setiap x
+    
+            const config = {
+                type: 'line',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        label: 'y = 2ˣ',
+                        data: yValues,
+                        borderColor: '#2A64FC',
+                        backgroundColor: 'rgba(42, 100, 252, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    }]
                 },
-                scales: {
-                    x: {
-                        title: {
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
                             display: true,
-                            text: 'x'
+                            position: 'top',
                         }
                     },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'y'
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'x'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'y'
+                            }
                         }
                     }
                 }
-            }
-        };
-        
-        // Render grafik
-        const ctx = document.getElementById('grafikEksponen').getContext('2d');
-        new Chart(ctx, config);
-    </script>
-</body>
-</html>
+            };
+            
+            // Render grafik
+            const ctx = document.getElementById('grafikEksponen').getContext('2d');
+            new Chart(ctx, config);
+        </script>
+    
+        <!-- Footer Copyright -->
+        <footer>
+            <p>&copy; Copyright <b>Kelompok 5</b>. All Rights Reserved</p>
+        </footer>
+    </body>
+    </html>
+    
