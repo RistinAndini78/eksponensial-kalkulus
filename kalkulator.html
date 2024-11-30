@@ -2,26 +2,20 @@
 <html lang="id">
 
 <head>
-    <!-- Meta tags untuk pengaturan karakter dan responsif -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Fungsi Eksponensial</title>
-    <!-- Link ke file CSS eksternal untuk styling -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- Menggunakan font dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Link ke ikon font-awesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Gaya untuk seluruh halaman */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #ffffff;
             text-align: center;
             margin-top: 50px;
         }
-
-        /* Dekorasi latar belakang, elemen dekoratif */
+        /* Background dekoratif */
         .background-decorations {
             position: fixed;
             top: 0;
@@ -30,10 +24,27 @@
             height: 100%;
             overflow: hidden;
             pointer-events: none;
-            z-index: -1;
+            z-index: -1; /* Supaya berada di belakang konten */
         }
-
-        /* Pola latar belakang tambahan */
+        .background-decorations::before, .background-decorations::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
+        }
+        .background-decorations::before {
+            width: 600px;
+            height: 600px;
+            top: -100px;
+            left: -150px;
+        }
+        .background-decorations::after {
+            width: 500px;
+            height: 500px;
+            bottom: -100px;
+            right: -120px;
+        }
+        /* Elemen dekorasi tambahan */
         .additional-decorations {
             position: fixed;
             top: 0;
@@ -41,10 +52,31 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -2;
+            z-index: -2; /* Tetap di belakang konten utama */
+        }
+        .additional-decorations::before, .additional-decorations::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 145, 234, 0.1); /* Warna biru muda transparan */
+            transform: rotate(45deg);
+            border-radius: 10px;
+        }
+        .additional-decorations::before {
+            width: 300px;
+            height: 20px;
+            top: 10%;
+            left: 20%;
         }
 
-        /* Pola SVG untuk latar belakang */
+        .additional-decorations::after {
+            width: 150px;
+            height: 150px;
+            bottom: 10%;
+            right: 10%;
+            transform: rotate(-45deg);
+        }
+
+        /* Pola SVG */
         .svg-pattern {
             position: fixed;
             top: 50%;
@@ -52,11 +84,23 @@
             width: 200px;
             height: 200px;
             transform: translate(-50%, -50%);
-            z-index: -1;
+            z-index: -1; /* Tetap di belakang */
             opacity: 0.5;
         }
 
-        /* Styling untuk elemen navigasi */
+        /* nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        } */
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -66,13 +110,11 @@
             margin-right: 10px;
         }
 
-        /* Menu navigasi di bagian atas */
         .menu {
             display: flex;
             gap: 20px;
         }
 
-        /* Styling untuk elemen menu */
         .menu-item {
             color: #000000;
             text-decoration: none;
@@ -80,7 +122,6 @@
             transition: color 0.3s;
         }
 
-        /* Judul kalkulator */
         .calculator-title {
             font-size: 32px; 
             font-weight: bold;
@@ -89,7 +130,7 @@
             margin-bottom: 10px; 
         }
 
-        /* Gaya untuk kalkulator */
+       
         .calculator {
             padding: 20px;
             text-align: center;
@@ -101,7 +142,6 @@
             margin-top: 20px;
         }
 
-        /* Styling untuk input nomor */
         .calculator input[type="number"] {
             width: 60%;
             padding: 12px;
@@ -112,7 +152,12 @@
             background-color: #f1f1f1;
         }
 
-        /* Gaya tombol kalkulator */
+        .calculator input[type="number"]:focus {
+            outline: none;
+            border-color: #ffbb33;
+            background-color: #ffffff;
+        }
+
         .calculator button {
             padding: 12px 30px;
             font-size: 18px;
@@ -123,7 +168,6 @@
             cursor: pointer;
         }
 
-        /* Gaya untuk tombol hitung */
         .calculator button#hitung {
             background-color: #2196f3;
         }
@@ -132,7 +176,6 @@
             background-color: #1976d2;
         }
 
-        /* Gaya untuk tombol reset */
         .calculator button#reset {
             background-color: #f44336;
         }
@@ -141,7 +184,6 @@
             background-color: #d32f2f;
         }
 
-        /* Area untuk menampilkan hasil */
         .result {
             margin-top: 20px;
             padding: 20px;
@@ -149,7 +191,6 @@
             font-size: 20px;
         }
 
-        /* Styling untuk pesan sukses atau error */
         .success {
             color: green;
         }
@@ -158,7 +199,7 @@
             color: red;
         }
 
-        /* Area kalkulator GeoGebra untuk grafik */
+        
         .geogebra-embed {
             margin-top: 40px;
             width: 100%;
@@ -170,7 +211,12 @@
             margin: 20px auto;
         }
 
-        /* Styling judul GeoGebra */
+        .geogebra-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         .geogebra-title {
             font-size: 32px; 
             font-weight: bold;
@@ -178,7 +224,7 @@
             color: #333;
         }
 
-        /* Efek teks dengan gradien */
+        
         .typing-gradient {
             background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
             -webkit-background-clip: text;
@@ -194,12 +240,12 @@
     <div class="background-decorations"></div>
     <div class="additional-decorations"></div>
 
-    <!-- Navbar dengan logo dan menu navigasi -->
     <nav class="navbar">
         <div class="logo-container">
             <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
             <h1 class="navbar-title">Eksponensial</h1>
         </div>
+
         <ul class="menu">
             <li><a href="index.html" class="menu-item">Beranda</a></li>
             <li><a href="penjelasan.html" class="menu-item">Penjelasan</a></li>
@@ -208,76 +254,70 @@
             <li><a href="kalkulator.html" class="menu-item">Kalkulator</a></li>
             <li><a href="anggota.html" class="menu-item">Anggota</a></li>
         </ul>
+
         <div class="logo-container">
             <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
             <h1 class="navbar-title">Kalkulus</h1>
         </div>
     </nav>
 
-    <!-- Judul kalkulator eksponensial -->
     <h1 class="typing-gradient calculator-title">Kalkulator Fungsi Eksponensial</h1>
     <p>Hitung menggunakan kalkulator dibawah ini :</p>
 
-    <!-- Form input untuk nilai x dan tombol hitung/reset -->
     <div class="calculator">
         <p>Masukkan nilai x untuk menghitung <strong>f(x) = 2<sup>x</sup></strong></p>
+
         <label for="xInput">Masukkan nilai x:</label>
         <input type="number" id="xInput" placeholder="Masukkan nilai x" />
+
         <button id="hitung" onclick="hitungEksponen()">Hitung</button>
         <button id="reset" onclick="resetForm()">Reset</button>
+
         <div class="result" id="result"></div>
     </div>
 
-    <!-- Judul dan iframe untuk GeoGebra -->
-    <h1 class="typing-gradient geogebra-title">Kalkulator Grafik</h1>
+    <h1 class="typing-gradient geogebra-title">Kalkulator Grafik</h2>
     <p>Anda bisa menggambarkan grafiknya menggunakan kalkulator grafik dibawah ini :</p>
     <div class="geogebra-embed">
         <iframe src="https://www.geogebra.org/graphing" width="100%" height="100%" title="GeoGebra Graphing Calculator"></iframe>
     </div>
 
     <script>
-        // Fungsi untuk menghitung hasil eksponensial
         function hitungEksponen() {
             const xInput = document.getElementById('xInput').value;
             const resultDiv = document.getElementById('result');
 
-            // Menangani input kosong
             if (xInput === '') {
                 resultDiv.innerHTML = '<span class="error">Masukkan nilai x terlebih dahulu!</span>';
                 return;
             }
 
-            // Konversi nilai x ke angka
             const x = parseFloat(xInput);
 
-            // Validasi apakah x adalah angka
             if (isNaN(x)) {
                 resultDiv.innerHTML = '<span class="error">Nilai x harus berupa angka!</span>';
                 return;
             }
 
-            const a = 2;  // Basis eksponensial, dalam hal ini 2^x
-            const hasil = Math.pow(a, x);  // Menghitung hasil dari 2^x
+            const a = 2;
+            const hasil = Math.pow(a, x);
 
-            // Mengecek jika hasil terlalu besar untuk ditampilkan
             if (hasil > Number.MAX_SAFE_INTEGER) {
                 resultDiv.innerHTML = '<span class="error">Hasil terlalu besar untuk ditampilkan!</span>';
                 return;
             }
 
-            // Menampilkan hasil yang dihitung
             resultDiv.innerHTML = `Hasil dari 2<sup>${x}</sup> adalah <span class="success"><strong>${hasil}</strong></span>`;
         }
 
-        // Fungsi untuk mereset form dan hasil perhitungan
         function resetForm() {
-            document.getElementById('xInput').value = '';  // Mengosongkan input
-            document.getElementById('result').innerHTML = '';  // Mengosongkan hasil
+            document.getElementById('xInput').value = '';
+            document.getElementById('result').innerHTML = '';
         }
     </script>
 
-    <!-- Footer yang berisi hak cipta -->
-    <footer style="background-color: #f1f1f1; padding: 20px; text-align: center; margin-top: 30px; font-size: 14px; color: #333;">
+     <!-- Footer Copyright -->
+     <footer style="background-color: #f1f1f1; padding: 20px; text-align: center; margin-top: 30px; font-size: 14px; color: #333;">
         <p>&copy; Copyright <b>Kelompok 5</b>. All Rights Reserved</p>
     </footer>
 
