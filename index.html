@@ -8,151 +8,163 @@
     <script src="js/script.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
-            text-align: center;
-            margin-top: 50px;
-            position: relative; /* Untuk menampung elemen dekoratif */
-            overflow: hidden;
-        }
+    body {
+        font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+        background-color: #ffffff; /* Warna latar belakang putih */
+        text-align: center; /* Menyelaraskan teks ke tengah */
+        margin-top: 50px; /* Memberikan jarak di atas halaman */
+        position: relative; /* Untuk menampung elemen dekoratif */
+        overflow: hidden; /* Menghindari overflow pada elemen */
+    }
 
-        /* Background dekoratif */
-        .background-decorations {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: -1; /* Supaya berada di belakang konten */
-        }
-        .background-decorations::before, .background-decorations::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
-        }
-        .background-decorations::before {
-            width: 600px;
-            height: 600px;
-            top: -100px;
-            left: -150px;
-        }
-        .background-decorations::after {
-            width: 500px;
-            height: 500px;
-            bottom: -100px;
-            right: -120px;
-        }
-        /* Elemen dekorasi tambahan */
-        .additional-decorations {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -2; /* Tetap di belakang konten utama */
-        }
-        .additional-decorations::before, .additional-decorations::after {
-            content: '';
-            position: absolute;
-            background: rgba(0, 145, 234, 0.1); /* Warna biru muda transparan */
-            transform: rotate(45deg);
-            border-radius: 10px;
-        }
-        .additional-decorations::before {
-            width: 300px;
-            height: 20px;
-            top: 10%;
-            left: 20%;
-        }
+    /* Dekorasi latar belakang, elemen dengan desain melayang */
+    .background-decorations {
+        position: fixed; /* Posisi tetap di layar */
+        top: 0;
+        left: 0;
+        width: 100%; /* Menutupi seluruh lebar */
+        height: 100%; /* Menutupi seluruh tinggi */
+        overflow: hidden; /* Menghindari elemen meluber keluar */
+        pointer-events: none; /* Agar elemen ini tidak mengganggu interaksi pengguna */
+        z-index: -1; /* Menempatkan dekorasi di belakang konten */
+    }
+    .background-decorations::before, .background-decorations::after {
+        content: ''; /* Membuat elemen kosong */
+        position: absolute; /* Posisi absolut di dalam parent */
+        border-radius: 50%; /* Membuat bentuk lingkaran */
+        background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
+    }
+    .background-decorations::before {
+        width: 600px; /* Ukuran lingkaran pertama */
+        height: 600px; 
+        top: -100px; /* Menempatkan sedikit di luar batas atas */
+        left: -150px; /* Menempatkan sedikit di luar batas kiri */
+    }
+    .background-decorations::after {
+        width: 500px; /* Ukuran lingkaran kedua */
+        height: 500px; 
+        bottom: -100px; /* Menempatkan sedikit di luar batas bawah */
+        right: -120px; /* Menempatkan sedikit di luar batas kanan */
+    }
 
-        .additional-decorations::after {
-            width: 150px;
-            height: 150px;
-            bottom: 10%;
-            right: 10%;
-            transform: rotate(-45deg);
-        }
+    /* Elemen dekorasi tambahan, desain kotak dengan rotasi */
+    .additional-decorations {
+        position: fixed; /* Posisi tetap di layar */
+        top: 0;
+        left: 0;
+        width: 100%; /* Menutupi seluruh lebar */
+        height: 100%; /* Menutupi seluruh tinggi */
+        pointer-events: none; /* Agar elemen ini tidak mengganggu interaksi pengguna */
+        z-index: -2; /* Menempatkan dekorasi ini lebih jauh ke belakang */
+    }
+    .additional-decorations::before, .additional-decorations::after {
+        content: ''; /* Membuat elemen kosong */
+        position: absolute; /* Posisi absolut di dalam parent */
+        background: rgba(0, 145, 234, 0.1); /* Warna biru muda transparan */
+        transform: rotate(45deg); /* Memberikan rotasi pada elemen */
+        border-radius: 10px; /* Membuat sudut melengkung */
+    }
+    .additional-decorations::before {
+        width: 300px; /* Ukuran kotak pertama */
+        height: 20px;
+        top: 10%; /* Menempatkan di 10% dari bagian atas layar */
+        left: 20%; /* Menempatkan di 20% dari bagian kiri layar */
+    }
+    .additional-decorations::after {
+        width: 150px; /* Ukuran kotak kedua */
+        height: 150px; 
+        bottom: 10%; /* Menempatkan di 10% dari bagian bawah layar */
+        right: 10%; /* Menempatkan di 10% dari bagian kanan layar */
+        transform: rotate(-45deg); /* Memberikan rotasi yang berlawanan */
+    }
 
-        /* Pola SVG */
-        .svg-pattern {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            transform: translate(-50%, -50%);
-            z-index: -1; /* Tetap di belakang */
-            opacity: 0.5;
-        }
+    /* Pola SVG yang digunakan sebagai dekorasi latar belakang */
+    .svg-pattern {
+        position: fixed; /* Posisi tetap di layar */
+        top: 50%; /* Menempatkan di tengah vertikal */
+        left: 50%; /* Menempatkan di tengah horizontal */
+        width: 200px; /* Ukuran pola */
+        height: 200px;
+        transform: translate(-50%, -50%); /* Memastikan elemen berada tepat di tengah */
+        z-index: -1; /* Menempatkan pola di belakang konten */
+        opacity: 0.5; /* Mengatur transparansi pola */
+    }
 
-        /* Membuat teks gradien */
-        .typing-gradient {
-            background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            font-size: 2em;
-            font-weight: 600;
-        }
+    /* Menambahkan efek teks gradien */
+    .typing-gradient {
+        background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60); /* Gradien biru */
+        -webkit-background-clip: text; /* Menerapkan gradien pada teks */
+        -webkit-text-fill-color: transparent; /* Membuat teks transparan dan hanya menampilkan gradien */
+        display: inline-block; /* Membuat elemen inline dengan block */
+        font-size: 2em; /* Ukuran font yang lebih besar */
+        font-weight: 600; /* Berat font */
+    }
 
-        .typing {
-            font-size: 50px;
-            font-weight: bold;
-        }
+    /* Efek pengetikan, font besar dan tebal */
+    .typing {
+        font-size: 50px; /* Ukuran font besar */
+        font-weight: bold; /* Font tebal */
+    }
 
-        .content-section {
-            padding: 10px 20px;
-            text-align: center;
-            margin-top: -5%; /* Mengurangi jarak dari atas */
-        }
+    /* Penataan section konten utama */
+    .content-section {
+        padding: 10px 20px; /* Memberikan padding pada konten */
+        text-align: center; /* Menyelaraskan teks ke tengah */
+        margin-top: -5%; /* Mengurangi jarak dari atas layar */
+    }
 
-        .content-section p {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            margin-top: 10px; /* Sedikit menggeser teks ke atas */
-            font-size: 14px;
-            line-height: 1.5;
-        }
+    /* Penataan paragraf dalam konten */
+    .content-section p {
+        text-align: center; /* Menyelaraskan teks ke tengah */
+        max-width: 900px; /* Membatasi lebar teks */
+        margin: 0 auto; /* Menempatkan teks di tengah secara horizontal */
+        margin-top: 10px; /* Memberikan jarak sedikit di atas teks */
+        font-size: 14px; /* Ukuran font lebih kecil untuk paragraf */
+        line-height: 1.5; /* Jarak antar baris teks */
+    }
 
-        footer {
-            background-color: #f1f1f1;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-            color: #333;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+    /* Penataan footer yang tetap di bagian bawah */
+    footer {
+        background-color: #f1f1f1; /* Warna latar belakang footer */
+        padding: 20px; /* Memberikan padding pada footer */
+        text-align: center; /* Menyelaraskan teks ke tengah */
+        font-size: 14px; /* Ukuran font kecil */
+        color: #333; /* Warna teks */
+        position: fixed; /* Memastikan footer tetap di bagian bawah */
+        bottom: 0; /* Posisi di bagian bawah halaman */
+        width: 100%; /* Menutupi seluruh lebar */
+    }
+</style>
+
     </style>
 </head>
 <body>
-    <!-- Elemen dekoratif latar belakang -->
+    <!-- Elemen dekoratif latar belakang (untuk desain estetika) -->
     <div class="background-decorations"></div>
     <div class="additional-decorations"></div>
 
     <div class="background-decorations">
-        <!-- Tambahan SVG simbol matematika -->
+        <!-- SVG simbol matematika yang digunakan sebagai elemen dekoratif -->
+        <!-- SVG pertama menggambarkan ikon matematika yang diletakkan di posisi tertentu -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="position: absolute; width: 150px; height: 150px; top: 20%; left: 5%; fill: rgba(0, 123, 255, 0.1);">
             <path d="M5 21l6-18h2l6 18h-2l-1.5-4.5h-7l-1.5 4.5h-2zm6.5-15l-2.5 7.5h5l-2.5-7.5z"/>
         </svg>
+        <!-- SVG kedua, ikonnya juga simbol matematika dengan posisi dan ukuran yang berbeda -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="position: absolute; width: 120px; height: 120px; top: 70%; right: 10%; fill: rgba(0, 145, 234, 0.1);">
             <path d="M7 12l5 8 5-8-5-8-5 8zm5-6.47l3.74 6.47-3.74 6.47-3.74-6.47 3.74-6.47z"/>
         </svg>
     </div>
     
+    <!-- Navigasi utama website -->
     <nav class="navbar">
         <div class="logo-container">
+            <!-- Logo di sebelah kiri navbar -->
             <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
+            <!-- Nama situs di navbar -->
             <h1 class="navbar-title">Eksponensial</h1>
         </div>
 
+        <!-- Menu navigasi yang berisi tautan ke halaman lain -->
         <ul class="menu">
             <li><a href="index.html" class="menu-item">Beranda</a></li>
             <li><a href="penjelasan.html" class="menu-item">Penjelasan</a></li>
@@ -162,42 +174,49 @@
             <li><a href="anggota.html" class="menu-item">Anggota</a></li>
         </ul>
 
+        <!-- Hamburger menu untuk tampilan kecil (responsif) -->
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
             <div></div>
             <div></div>
         </div>
 
+        <!-- Logo tambahan untuk tampilan kecil (responsif) -->
         <div class="logo-container sm-hidden">
             <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
             <h1 class="navbar-title">Kalkulus</h1>
         </div>
     </nav>
 
+    <!-- Bagian utama konten yang menampilkan teks dinamis -->
     <section id="content" class="content-section" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <!-- Teks dinamis yang diketik dengan efek typing -->
         <div id="simpleUsage" class="typing typing-gradient"></div>
+        <!-- Deskripsi mengenai fungsi eksponensial yang diberikan -->
         <p>
             Panduan lengkap mengenai fungsi eksponensial yang mencakup penjelasan tentang fungsi dasar seperti pertumbuhan eksponensial dan peluruhan. Situs ini menyediakan sifat-sifat penting, grafik fungsi, contoh soal, serta kalkulator interaktif yang dapat memudahkan.
         </p>
     </section>
 
+    <!-- Menyertakan pustaka eksternal untuk efek ketik -->
     <script src="https://unpkg.com/typeit@8.8.7/dist/index.umd.js"></script>
     <script>
+        // Menjalankan efek typing pada elemen dengan ID #simpleUsage
         new TypeIt("#simpleUsage", {
-            strings: ["Projek Mata Kuliah Kalkulus", "Materi Fungsi Eksponensial"],
-            speed: 150,
-            waitUntilVisible: true,
-            loop: true,
-            breakLines: false,
+            strings: ["Projek Mata Kuliah Kalkulus", "Materi Fungsi Eksponensial"], // Teks yang akan diketik
+            speed: 150, // Kecepatan pengetikan
+            waitUntilVisible: true, // Menunggu elemen terlihat sebelum mulai mengetik
+            loop: true, // Ulangi terus
+            breakLines: false, // Tidak membuat baris baru
             afterComplete: function (instance) {
-                instance.getElement().classList.add("typing-gradient");
+                instance.getElement().classList.add("typing-gradient"); // Menambahkan kelas untuk efek gradien
             }
         }).go();
     </script>
 
-    <!-- Footer -->
+    <!-- Footer yang selalu berada di bagian bawah -->
     <footer>
+        <!-- Menampilkan informasi hak cipta dan nama kelompok -->
         <p>&copy; Copyright <b>Kelompok 5</b>. All Rights Reserved</p>
     </footer>
 </body>
-</html>

@@ -4,145 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Menyisipkan file CSS eksternal untuk gaya halaman -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Menyisipkan font Poppins dari Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Menyisipkan Font Awesome untuk ikon -->
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
-            text-align: center;
-            margin-top: 50px;
+            font-family: 'Poppins', sans-serif;  /* Mengatur font halaman */
+            background-color: #ffffff;  /* Menetapkan warna latar belakang putih */
+            text-align: center;  /* Mengatur teks agar berada di tengah */
+            margin-top: 50px;  /* Memberi jarak dari atas */
         }
-        /* Background dekoratif */
+        
+        /* Dekorasi background dengan elemen berbentuk lingkaran */
         .background-decorations {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: -1; /* Supaya berada di belakang konten */
+            position: fixed;  /* Menempatkan elemen tetap di layar */
+            top: 0; left: 0; width: 100%; height: 100%;  /* Menutupi seluruh layar */
+            overflow: hidden;  /* Menyembunyikan elemen yang keluar dari batas */
+            pointer-events: none;  /* Menonaktifkan interaksi pengguna dengan elemen ini */
+            z-index: -1; /* Agar elemen dekorasi berada di belakang konten */
         }
+
         .background-decorations::before, .background-decorations::after {
-            content: '';
+            content: '';  /* Membuat elemen pseudo dengan konten kosong */
             position: absolute;
-            border-radius: 50%;
-            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
+            border-radius: 50%;  /* Membuat elemen berbentuk lingkaran */
+            background: rgba(2, 102, 209, 0.1); /* Warna latar belakang dengan transparansi */
         }
+
         .background-decorations::before {
-            width: 600px;
-            height: 600px;
-            top: -100px;
-            left: -150px;
+            width: 600px; height: 600px; top: -100px; left: -150px;  /* Posisi dan ukuran lingkaran pertama */
         }
+
         .background-decorations::after {
-            width: 500px;
-            height: 500px;
-            bottom: -100px;
-            right: -120px;
+            width: 500px; height: 500px; bottom: -100px; right: -120px;  /* Posisi dan ukuran lingkaran kedua */
         }
-        /* Elemen dekorasi tambahan */
+
+        /* Dekorasi tambahan pada background */
         .additional-decorations {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -2; /* Tetap di belakang konten utama */
+            position: fixed;  /* Menempatkan elemen tetap di layar */
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;  /* Menonaktifkan interaksi pengguna dengan elemen ini */
+            z-index: -2; /* Agar elemen ini berada lebih rendah dari dekorasi sebelumnya */
         }
+
         .additional-decorations::before, .additional-decorations::after {
-            content: '';
+            content: '';  /* Membuat elemen pseudo dengan konten kosong */
             position: absolute;
             background: rgba(0, 145, 234, 0.1); /* Warna biru muda transparan */
-            transform: rotate(45deg);
-            border-radius: 10px;
+            transform: rotate(45deg);  /* Memutar elemen */
+            border-radius: 10px;  /* Membuat sudut lebih melengkung */
         }
+
         .additional-decorations::before {
-            width: 300px;
-            height: 20px;
-            top: 10%;
-            left: 20%;
+            width: 300px; height: 20px; top: 10%; left: 20%;  /* Posisi elemen pertama */
         }
 
         .additional-decorations::after {
-            width: 150px;
-            height: 150px;
-            bottom: 10%;
-            right: 10%;
-            transform: rotate(-45deg);
+            width: 150px; height: 150px; bottom: 10%; right: 10%; /* Posisi elemen kedua */
+            transform: rotate(-45deg);  /* Membalik rotasi elemen */
         }
 
-        /* Pola SVG */
+        /* Pola SVG di tengah layar */
         .svg-pattern {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            transform: translate(-50%, -50%);
-            z-index: -1; /* Tetap di belakang */
-            opacity: 0.5;
+            top: 50%; left: 50%; width: 200px; height: 200px;
+            transform: translate(-50%, -50%);  /* Menempatkan pola di tengah layar */
+            z-index: -1; /* Agar pola berada di belakang konten */
+            opacity: 0.5; /* Mengatur transparansi */
         }
 
-        /* Kartu anggota */
+        /* Gaya untuk kartu anggota tim */
         .content-section {
-            text-align: center;
-            padding: 20px;
+            text-align: center;  /* Menempatkan teks di tengah */
+            padding: 20px;  /* Memberi jarak di dalam elemen */
         }
 
         .cards-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
+            display: flex;  /* Menggunakan flexbox untuk layout kartu */
+            justify-content: center;  /* Menyusun kartu agar terpusat */
+            flex-wrap: wrap;  /* Membungkus kartu jika tidak muat dalam satu baris */
+            gap: 20px;  /* Memberi jarak antar kartu */
+            margin-top: 20px;  /* Memberi jarak atas */
         }
 
         .card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 230px;
-            height: 485px;
-            padding: 10px;
-            text-align: center;
+            background-color: white;  /* Latar belakang kartu berwarna putih */
+            border-radius: 10px;  /* Sudut kartu membulat */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);  /* Efek bayangan pada kartu */
+            transition: 0.3s;  /* Efek transisi saat hover */
+            width: 230px; height: 485px; padding: 10px; text-align: center;
         }
 
         .card:hover {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);  /* Efek bayangan saat kartu dihover */
         }
 
         .card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
+            width: 100%; height: 300px; object-fit: cover; border-radius: 10px;  /* Gambar pada kartu agar sesuai ukuran dan berbentuk melengkung */
         }
 
         .container {
-            padding: 10px 0;
+            padding: 10px 0;  /* Memberi jarak atas dan bawah pada konten dalam kartu */
         }
 
         .container h4 {
-            margin: 10px 0;
-            color: #2A64FC;
+            margin: 10px 0; color: #2A64FC;  /* Menambahkan margin dan mengatur warna judul */
         }
 
         .container p {
-            color: #555;
+            color: #555;  /* Mengatur warna teks deskripsi anggota */
         }
-        
 
-        /* Gaya ikon tombol */
+        /* Gaya untuk tombol media sosial */
         .btn {
-            text-decoration: none;
-            color: #2A64FC;
-            font-size: 20px;
-            margin: 5px;
+            text-decoration: none;  /* Menghilangkan garis bawah pada tautan */
+            color: #2A64FC;  /* Mengatur warna ikon */
+            font-size: 20px;  /* Mengatur ukuran font ikon */
+            margin: 5px;  /* Memberi jarak antar ikon */
         }
     </style>
 </head>
@@ -152,7 +130,7 @@
     <div class="background-decorations"></div>
     <div class="additional-decorations"></div>
 
-    <!-- Navbar -->
+    <!-- Navbar dengan menu navigasi -->
     <nav class="navbar">
         <div class="logo-container">
             <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
@@ -160,6 +138,7 @@
         </div>
 
         <ul class="menu">
+            <!-- Menu navigasi untuk berpindah antar halaman -->
             <li><a href="index.html" class="menu-item">Beranda</a></li>
             <li><a href="penjelasan.html" class="menu-item">Penjelasan</a></li>
             <li><a href="sifat.html" class="menu-item">Sifat</a></li>
@@ -174,13 +153,11 @@
         </div>
     </nav>
 
-    <!-- Konten Utama Halaman Anggota -->
+    <!-- Konten utama halaman anggota tim -->
     <section class="content-section">
         <h2>Anggota Tim</h2>
         <div class="cards-container">
-            
-
-            <!-- Kartu Anggota 2 -->
+            <!-- Kartu Anggota 1 -->
             <div class="card">
                 <img src="logo/aini.jpg" alt="Foto Anggota 2">
                 <div class="container">
@@ -190,7 +167,7 @@
                 </div>
             </div>
 
-            <!-- Kartu Anggota 3 -->
+            <!-- Kartu Anggota 2 -->
             <div class="card">
                 <img src="logo/png.png" alt="Foto Anggota 3">
                 <div class="container">
@@ -200,7 +177,7 @@
                 </div>
             </div>
 
-            <!-- Kartu Anggota 1 -->
+            <!-- Kartu Anggota 3 -->
             <div class="card">
                 <img src="logo/ristin.jpg.jpg" alt="Foto Anggota 1">
                 <div class="container">
@@ -216,14 +193,18 @@
                 <div class="container">
                     <h4><b>Christine Angelica Soeharyanto</b></h4>
                     <p>Riset Materi</p>
-                    <a href="https://www.instagram.com/christineangelica100784/profilecard/?igsh=djl5dHFuMW01N3N5 " class="btn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/christineangelica100784/profilecard/?igsh=djl5dHFuMW01N3N5" class="btn"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Footer Copyright -->
+
+    <!-- Footer copyright untuk hak cipta -->
     <footer style="background-color: #f1f1f1; padding: 20px; text-align: center; margin-top: 30px; font-size: 14px; color: #333;">
-        <p>&copy; Copyright <b>Kelompok 5</b>. All Rights Reserved</p>
+        <p>&copy; Copyright <b>Kelompok 5</b>. All Rights Reserved</p>  <!-- Menampilkan teks hak cipta di footer -->
     </footer>
 </body>
 </html>
+
+
+            

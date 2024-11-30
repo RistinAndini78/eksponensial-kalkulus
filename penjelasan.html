@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- Meta tag untuk karakter set dan responsif tampilan -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang</title>
+    <!-- Link ke stylesheet eksternal -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Menggunakan font Poppins dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        /* Gaya untuk body dan teks */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #ffffff;
@@ -14,7 +18,7 @@
             margin-top: 50px;
         }
 
-        /* Background dekoratif */
+        /* Dekorasi latar belakang dengan elemen bulat */
         .background-decorations {
             position: fixed;
             top: 0;
@@ -23,7 +27,7 @@
             height: 100%;
             overflow: hidden;
             pointer-events: none;
-            z-index: -1; /* Supaya berada di belakang konten */
+            z-index: -1;
         }
         .background-decorations::before, .background-decorations::after {
             content: '';
@@ -43,7 +47,8 @@
             bottom: -100px;
             right: -120px;
         }
-        /* Elemen dekorasi tambahan */
+
+        /* Dekorasi tambahan dengan elemen kotak rotasi */
         .additional-decorations {
             position: fixed;
             top: 0;
@@ -51,7 +56,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -2; /* Tetap di belakang konten utama */
+            z-index: -2;
         }
         .additional-decorations::before, .additional-decorations::after {
             content: '';
@@ -66,7 +71,6 @@
             top: 10%;
             left: 20%;
         }
-
         .additional-decorations::after {
             width: 150px;
             height: 150px;
@@ -75,7 +79,7 @@
             transform: rotate(-45deg);
         }
 
-        /* Pola SVG */
+        /* Pola SVG dekoratif */
         .svg-pattern {
             position: fixed;
             top: 50%;
@@ -83,17 +87,18 @@
             width: 200px;
             height: 200px;
             transform: translate(-50%, -50%);
-            z-index: -1; /* Tetap di belakang */
+            z-index: -1;
             opacity: 0.5;
         }
 
+        /* Gaya untuk bagian konten */
         .content-section {
             padding: 20px;
             text-align: center;
             margin-top: 10px;
         }
 
-        /* Gaya untuk grid */
+        /* Grid untuk menampilkan kotak informasi */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -101,6 +106,7 @@
             margin-top: 20px;
         }
 
+        /* Gaya kotak informasi */
         .box {
             background-color: white;
             text-align: left;
@@ -110,24 +116,25 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* Gaya untuk judul dalam kotak */
         .box h3 {
             margin-top: 0;
             text-align: center;
             margin-top: 10px;
         }
 
-        /* Gaya untuk teks gradasi */
+        /* Gaya teks gradasi */
         .typing-gradient {
             background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
             -webkit-background-clip: text;
             color: transparent;
             display: inline-block;
-            margin-bottom: 1px; /* Menambah jarak bawah pada judul */
+            margin-bottom: 1px;
         }
 
         .content-section p {
             margin-top: 10px;
-            margin-bottom: 10px; /* Menambah jarak bawah pada paragraf */
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -136,7 +143,7 @@
     <div class="background-decorations"></div>
     <div class="additional-decorations"></div>
 
-    <!-- Pola SVG -->
+    <!-- Pola SVG dekoratif -->
     <svg class="svg-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
         <circle cx="10" cy="10" r="8" fill="rgba(2, 102, 209, 0.2)" />
         <circle cx="30" cy="30" r="10" fill="rgba(0, 145, 234, 0.2)" />
@@ -146,11 +153,13 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo-container">
+            <!-- Logo Eksponensial -->
             <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
             <h1 class="navbar-title">Eksponensial</h1>
         </div>
 
         <ul class="menu">
+            <!-- Menu navigasi ke halaman lain -->
             <li><a href="index.html" class="menu-item">Beranda</a></li>
             <li><a href="penjelasan.html" class="menu-item">Penjelasan</a></li>
             <li><a href="sifat.html" class="menu-item">Sifat</a></li>
@@ -160,6 +169,7 @@
         </ul>
 
         <div class="logo-container">
+            <!-- Logo Kalkulus -->
             <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
             <h1 class="navbar-title">Kalkulus</h1>
         </div>
@@ -171,10 +181,12 @@
         <p>Berikut adalah materi-materi tentang Fungsi Eksponensial:</p>
         
         <div class="grid-container">
+            <!-- Kotak 1: Penjelasan Fungsi Eksponensial -->
             <div class="box">
                 <h3>Apa itu Fungsi Eksponensial?</h3>
                 <p>Fungsi eksponensial adalah fungsi di mana variabelnya berada pada pangkat. Berbeda dengan fungsi biasa yang memiliki variabel pada basis, dalam fungsi eksponensial, konstanta menjadi basis, sementara variabel berada pada eksponen.</p>
             </div>
+            <!-- Kotak 2: Bentuk Umum Fungsi Eksponensial -->
             <div class="box">
                 <h3>Bentuk umum fungsi eksponensial</h3>
                 <p>Fungsi eksponensial memiliki bentuk umum y = a * b<sup>x</sup>, di mana:</p>  
@@ -184,6 +196,7 @@
                     <li>x adalah variabel bebas.</li>
                 </ul>
             </div>
+            <!-- Kotak 3: Rumus dalam Fungsi Eksponensial -->
             <div class="box">
                 <h3>Rumus</h3>
                 <p>Jika a<sup>f(x)</sup> = 1 maka f(x) = 0</p>
@@ -193,11 +206,13 @@
             </div>
         </div>
     </section>
+    
     <section class="content-section">
         <h2 class="typing-gradient">Cara Menggambarkan Grafik</h2>
         <p> Cara membuat grafik fungsi eksponen terbagi menjadi 4 langkah, yaitu:</p>
 
         <div class="box">
+            <!-- Langkah-langkah menggambar grafik -->
             <p><b>1. Ambil Titik x (Absis) Secara Sembarang</b></p>
             <p>Titik absis (x) memiliki nilai mulai dari bilangan negatif ke positif yang urut. Pemilihan nilai x akan membantu kita dalam mendapat grafik fungsi eksponen dengan baik. Misalnya, nilai absis x = -2, -1, 0, 1, dan 2.</p>
             

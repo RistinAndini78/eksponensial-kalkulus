@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sifat Fungsi Eksponensial</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"> <!-- Menyertakan file CSS eksternal -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Menyertakan font Poppins -->
     <style>
+        /* Mengatur gaya untuk elemen body */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #ffffff;
             text-align: center;
             margin-top: 50px;
         }
-        /* Background dekoratif */
+        
+        /* Latar belakang dekoratif yang bergerak di belakang konten */
         .background-decorations {
             position: fixed;
             top: 0;
@@ -22,27 +24,31 @@
             height: 100%;
             overflow: hidden;
             pointer-events: none;
-            z-index: -1; /* Supaya berada di belakang konten */
+            z-index: -1; /* Menempatkan elemen dekoratif di belakang konten */
         }
+
         .background-decorations::before, .background-decorations::after {
             content: '';
             position: absolute;
-            border-radius: 50%;
-            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
+            border-radius: 50%; 
+            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan untuk efek latar */
         }
+
         .background-decorations::before {
             width: 600px;
             height: 600px;
             top: -100px;
             left: -150px;
         }
+
         .background-decorations::after {
             width: 500px;
             height: 500px;
             bottom: -100px;
             right: -120px;
         }
-        /* Elemen dekorasi tambahan */
+
+        /* Dekorasi tambahan dengan pola dan warna lain */
         .additional-decorations {
             position: fixed;
             top: 0;
@@ -50,8 +56,9 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -2; /* Tetap di belakang konten utama */
+            z-index: -2; /* Tetap di belakang latar belakang dekoratif */
         }
+
         .additional-decorations::before, .additional-decorations::after {
             content: '';
             position: absolute;
@@ -59,6 +66,7 @@
             transform: rotate(45deg);
             border-radius: 10px;
         }
+
         .additional-decorations::before {
             width: 300px;
             height: 20px;
@@ -74,31 +82,34 @@
             transform: rotate(-45deg);
         }
 
-        /* Pola SVG */
+        /* Pola SVG yang ditampilkan di tengah */
         .svg-pattern {
             position: fixed;
             top: 50%;
             left: 50%;
             width: 200px;
             height: 200px;
-            transform: translate(-50%, -50%);
-            z-index: -1; /* Tetap di belakang */
-            opacity: 0.5;
+            transform: translate(-50%, -50%); 
+            z-index: -1; /* Diletakkan di belakang konten utama */
+            opacity: 0.5; /* Efek transparan */
         }
 
+        /* Konten utama dengan jarak dan desain */
         .content-section {
             padding: 20px;
             text-align: center;
             margin-top: 100px;
         }
 
+        /* Grid untuk menampilkan box konten */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* Membagi konten menjadi dua kolom */
             gap: 20px;
             margin-top: 20px;
         }
 
+        /* Setiap box dengan gaya desain */
         .box {
             background-color: white;
             padding: 20px;
@@ -109,9 +120,10 @@
 
         .box h3 {
             margin-top: 0;
-            color: #2A64FC;
+            color: #2A64FC; /* Warna biru untuk judul */
         }
 
+        /* Efek teks dengan gradien */
         .typing-gradient {
             background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
             -webkit-background-clip: text;
@@ -125,14 +137,15 @@
     <div class="background-decorations"></div>
     <div class="additional-decorations"></div>
 
-    <!-- Navbar -->
+    <!-- Navbar dengan menu -->
     <nav class="navbar">
         <div class="logo-container">
-            <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
-            <h1 class="navbar-title">Eksponensial</h1>
+            <img src="logo/ekspo.png" alt="Logo" width="30" height="30"> <!-- Logo pertama -->
+            <h1 class="navbar-title">Eksponensial</h1> <!-- Judul menu -->
         </div>
 
         <ul class="menu">
+            <!-- Daftar menu navigasi -->
             <li><a href="index.html" class="menu-item">Beranda</a></li>
             <li><a href="penjelasan.html" class="menu-item">Penjelasan</a></li>
             <li><a href="sifat.html" class="menu-item">Sifat</a></li>
@@ -142,16 +155,17 @@
         </ul>
 
         <div class="logo-container">
-            <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
-            <h1 class="navbar-title">Kalkulus</h1>
+            <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30"> <!-- Logo kedua -->
+            <h1 class="navbar-title">Kalkulus</h1> <!-- Judul kedua pada menu -->
         </div>
     </nav>
 
-    <!-- Konten Utama -->
+    <!-- Konten utama mengenai sifat fungsi eksponensial -->
     <section class="content-section">
         <h2 class="typing-gradient">Sifat-Sifat Fungsi Eksponensial</h2>
         
         <div class="grid-container">
+            <!-- Setiap box menjelaskan sifat fungsi eksponensial -->
             <div class="box">
                 <h3>1. Selalu Positif</h3>
                 <p>Untuk setiap nilai x (baik positif, negatif, atau nol), nilai f(x) selalu positif. Grafik fungsi eksponensial selalu berada di atas sumbu x.</p>
@@ -188,8 +202,9 @@
             </div>
         </div>
     </section>
-    <!-- Footer Copyright -->
+
     <footer style="background-color: #f1f1f1; padding: 20px; text-align: center; margin-top: 30px; font-size: 14px; color: #333;">
+        <!-- Footer yang menampilkan hak cipta -->
         <p>&copy; Copyright <b>Kelompok 5</b>. All Rights Reserved</p>
     </footer>
 </body>

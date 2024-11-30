@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contoh</title>
+
+    <!-- Menyertakan pustaka Chart.js untuk membuat grafik -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Menyertakan file CSS untuk gaya halaman -->
     <link rel="stylesheet" href="./css/style.css">
+    <!-- Menyertakan font dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
+        /* Gaya untuk elemen body, pengaturan font, background, dan margin */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #ffffff;
-            margin: 20px;
+            margin: 0;
             padding: 0;
-            line-height: 1.6;
-            position: relative; /* Agar konten tidak tumpang tindih dengan footer */
-            min-height: 100vh; /* Membuat tinggi halaman minimal 100% */
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 80px; /* Ruang untuk footer */
+            box-sizing: border-box;
         }
-        
-        /* Background dekoratif */
+
+        /* Dekorasi latar belakang (lingkaran besar berwarna transparan) */
         .background-decorations {
             position: fixed;
             top: 0;
@@ -26,44 +33,50 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            pointer-events: none;
-            z-index: -1; /* Supaya berada di belakang konten */
+            pointer-events: none;  /* Agar tidak mengganggu interaksi */
+            z-index: -1; /* Menempatkan dekorasi di belakang konten */
         }
+
         .background-decorations::before, .background-decorations::after {
-            content: '';
+            content: ''; 
             position: absolute;
-            border-radius: 50%;
-            background: rgba(2, 102, 209, 0.1); /* Warna biru transparan */
+            border-radius: 50%; /* Membuat lingkaran */
+            background: rgba(2, 102, 209, 0.1); /* Warna latar belakang transparan biru */
         }
+
         .background-decorations::before {
             width: 600px;
             height: 600px;
             top: -100px;
             left: -150px;
         }
+
         .background-decorations::after {
             width: 500px;
             height: 500px;
             bottom: -100px;
             right: -120px;
         }
-        /* Elemen dekorasi tambahan */
+
+        /* Dekorasi tambahan (strip dan lingkaran kecil) */
         .additional-decorations {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: -2; /* Tetap di belakang konten utama */
+            pointer-events: none; /* Agar tidak mengganggu interaksi */
+            z-index: -2; /* Menempatkan dekorasi lebih rendah dari elemen sebelumnya */
         }
+
         .additional-decorations::before, .additional-decorations::after {
             content: '';
             position: absolute;
-            background: rgba(0, 145, 234, 0.1); /* Warna biru muda transparan */
-            transform: rotate(45deg);
+            background: rgba(0, 145, 234, 0.1); /* Warna biru transparan */
+            transform: rotate(45deg); /* Rotasi untuk efek lebih menarik */
             border-radius: 10px;
         }
+
         .additional-decorations::before {
             width: 300px;
             height: 20px;
@@ -76,27 +89,28 @@
             height: 150px;
             bottom: 10%;
             right: 10%;
-            transform: rotate(-45deg);
+            transform: rotate(-45deg); /* Rotasi arah berlawanan */
         }
 
-        /* Pola SVG */
+        /* Pola SVG untuk efek visual di tengah halaman */
         .svg-pattern {
             position: fixed;
             top: 50%;
             left: 50%;
             width: 200px;
             height: 200px;
-            transform: translate(-50%, -50%);
-            z-index: -1; /* Tetap di belakang */
-            opacity: 0.5;
+            transform: translate(-50%, -50%); /* Menempatkan pola tepat di tengah */
+            z-index: -1; /* Agar pola berada di belakang konten */
+            opacity: 0.5; /* Membuat pola transparan */
         }
 
+        /* Gaya untuk konten utama (soal dan jawaban) */
         .content {
             max-width: 800px;
             margin: auto;
             padding: 20px;
             margin-top: 50px;
-            padding-bottom: 100px; /* Memberikan ruang untuk footer */
+            padding-bottom: 100px; /* Ruang tambahan untuk footer */
         }
 
         h1 {
@@ -104,57 +118,62 @@
             color: #000000;
         }
 
+        /* Gaya untuk elemen pertanyaan */
         .question {
             margin-bottom: 30px;
             padding: 15px;
-            border: 2px solid #2A64FC;
+            border: 2px solid #2A64FC; /* Border biru */
             border-radius: 10px;
             background-color: #f9f9f9;
         }
 
         .question h2 {
             margin: 0 0 10px;
-            color: #012582;
+            color: #012582; /* Warna judul pertanyaan */
         }
 
+        /* Gaya untuk elemen jawaban */
         .answer {
             margin-top: 10px;
-            background-color: #e6f7ff;
+            background-color: #e6f7ff; /* Warna latar belakang jawaban */
             padding: 10px;
             border-radius: 5px;
-            border-left: 4px solid #2A64FC;
+            border-left: 4px solid #2A64FC; /* Border kiri biru */
         }
 
         canvas {
             margin-top: 20px;
-            max-width: 100%;
+            max-width: 100%; /* Agar grafik responsif */
         }
 
+        /* Gaya untuk footer (menempel di bawah halaman) */
         footer {
-    background-color: #f1f1f1;
-    padding: 20px;
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            position: absolute; /* Footer menempel di bawah */
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
-    <!-- Elemen dekoratif latar belakang -->
+    <!-- Dekorasi latar belakang -->
     <div class="background-decorations"></div>
     <div class="additional-decorations"></div>
-    
+
+    <!-- Navbar dengan menu navigasi -->
     <nav class="navbar">
         <div class="logo-container">
             <img src="logo/ekspo.png" alt="Logo" width="30" height="30">
             <h1 class="navbar-title">Eksponensial</h1>
         </div>
 
+        <!-- Menu navigasi -->
         <ul class="menu">
             <li><a href="index.html" class="menu-item">Beranda</a></li>
             <li><a href="penjelasan.html" class="menu-item">Penjelasan</a></li>
@@ -164,17 +183,18 @@
             <li><a href="anggota.html" class="menu-item">Anggota</a></li>
         </ul>
 
+        <!-- Hamburger menu untuk tampilan kecil -->
         <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
         </div>
 
+        <!-- Logo kedua untuk tampilan kecil -->
         <div class="logo-container sm-hidden">
             <img src="logo/k-removebg-preview.png" alt="Logo" width="30" height="30">
             <h1 class="navbar-title">Kalkulus</h1>
         </div>
     </nav>
+
+    <!-- Konten soal dan jawaban -->
     <div class="content">
         <h1>Contoh Soal</h1>
 
@@ -190,7 +210,7 @@
             </div>
         </div>
 
-        <!-- Soal 2 -->
+        <!-- Soal 2 (dengan grafik menggunakan Chart.js) -->
         <div class="question">
             <h2>Soal 2</h2>
             <p>Lukislah grafik fungsi 𝑦 = 2𝑥 dengan 𝑥 ∈ R</p>
@@ -199,9 +219,10 @@
                 <br>x = -2, y = 2⁻² = ¼<br>
                 x = -1, y = 2⁻¹ = ½ <br>  
                 x = 0, y = 2⁰ = 1 <br> 
-                x = 1, y = 2¹ = 2 <br> 
+                x = 1, y = 2¹ = 2 <br>  
                 x = 2, y = 2² = 4 <br>  
                 <b>Pembahasan:</b> Menghitung tiap titik grafik.
+                <!-- Menampilkan grafik dengan menggunakan Chart.js -->
                 <canvas id="grafikEksponen"></canvas>
             </div>
         </div>
@@ -221,66 +242,64 @@
             <h2>Soal 4</h2>
             <p>Tentukan penyelesaian f(x) = x² + 1 jika x = 5</p>
             <div class="answer">
-                <div class="answer">
-                    <b>Jawaban:</b> <br>f(5) = 5² + 1 = 25 + 1 = 26<br> 
-                    <b>Pembahasan:</b> <br>Substitusi x = 5 ke dalam fungsi 𝑓(𝑥) = x² + 1.
-                </div>
+                <b>Jawaban:</b> <br>f(5) = 5² + 1 = 25 + 1 = 26<br> 
+                <b>Pembahasan:</b> <br>Substitusi x = 5 ke dalam fungsi 𝑓(𝑥) = x² + 1.
             </div>
         </div>
+    </div>
+
+    <!-- Script untuk menghasilkan grafik menggunakan Chart.js -->
+    <script>
+        // Data untuk grafik y = 2^x
+        const xValues = [-2, -1, 0, 1, 2];
+        const yValues = xValues.map(x => Math.pow(2, x)); // Hitung nilai y untuk setiap x
     
-        <!-- Grafik dengan Chart.js -->
-        <script>
-            // Data untuk grafik y = 2^x
-            const xValues = [-2, -1, 0, 1, 2];
-            const yValues = xValues.map(x => Math.pow(2, x)); // Hitung nilai y untuk setiap x
-    
-            const config = {
-                type: 'line',
-                data: {
-                    labels: xValues,
-                    datasets: [{
-                        label: 'y = 2ˣ',
-                        data: yValues,
-                        borderColor: '#2A64FC',
-                        backgroundColor: 'rgba(42, 100, 252, 0.2)',
-                        fill: true,
-                        tension: 0.4
-                    }]
+        const config = {
+            type: 'line',
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: 'y = 2ˣ',
+                    data: yValues,
+                    borderColor: '#2A64FC',  // Warna garis grafik
+                    backgroundColor: 'rgba(42, 100, 252, 0.2)',  // Warna latar belakang grafik
+                    fill: true,  // Mengisi area di bawah garis
+                    tension: 0.4  // Menentukan kelengkungan grafik
+                }]
+            },
+            options: {
+                responsive: true,  // Membuat grafik responsif
+                plugins: {
+                    legend: {
+                        display: true,  // Menampilkan legenda
+                        position: 'top',  // Menempatkan legenda di atas grafik
+                    }
                 },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
+                scales: {
+                    x: {
+                        title: {
+                            display: true,  // Menampilkan judul sumbu x
+                            text: 'x'
                         }
                     },
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'x'
-                            }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'y'
-                            }
+                    y: {
+                        title: {
+                            display: true,  // Menampilkan judul sumbu y
+                            text: 'y'
                         }
                     }
                 }
-            };
-            
-            // Render grafik
-            const ctx = document.getElementById('grafikEksponen').getContext('2d');
-            new Chart(ctx, config);
-        </script>
+            }
+        };
+        
+        // Render grafik pada elemen canvas dengan id 'grafikEksponen'
+        const ctx = document.getElementById('grafikEksponen').getContext('2d');
+        new Chart(ctx, config);
+    </script>
     
-        <!-- Footer Copyright -->
-        <footer>
-            <p>&copy; Copyright <b>Kelompok 5</b>. All Rights Reserved</p>
-        </footer>
-    </body>
-    </html>
-    
+    <!-- Footer Copyright -->
+    <footer>
+        <p>&copy; Copyright <b>Kelompok 5</b>. All Rights Reserved</p>
+    </footer>
+</body>
+</html>
