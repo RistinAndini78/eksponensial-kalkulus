@@ -1,138 +1,150 @@
+/* Reset margin dan padding untuk semua elemen */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Hilangkan bullet pada list */
 li {
     list-style-type: none;
 }
 
+/* Atur font default untuk seluruh dokumen */
 body {
     font-family: Arial, sans-serif;
 }
 
+/* Gaya untuk navbar utama */
 .navbar {
-    position: fixed;
+    position: fixed; /* Navbar tetap di posisi atas saat scroll */
     top: 0;
     left: 0;
     right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    background-color: white;
-    z-index: 50;
-    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    display: flex; /* Gunakan Flexbox untuk tata letak */
+    justify-content: center; /* Pusatkan konten secara horizontal */
+    align-items: center; /* Pusatkan konten secara vertikal */
+    gap: 10px; /* Jarak antar elemen dalam navbar */
+    padding: 10px 20px; /* Ruang di dalam navbar */
+    background-color: white; /* Warna latar belakang putih */
+    z-index: 50; /* Pastikan navbar ada di atas elemen lainnya */
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease; /* Animasi transisi */
 }
 
+/* Gaya untuk teks judul dalam logo navbar */
 .logo-container .navbar-title {
-    font-size: 16px;
+    font-size: 16px; /* Ukuran font kecil */
 }
 
+/* Gaya untuk elemen container logo dan tombol tema */
 .logo-container,
 .theme-toggle {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 12px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 30px;
+    display: flex; /* Gunakan Flexbox untuk tata letak */
+    align-items: center; /* Pusatkan konten secara vertikal */
+    gap: 10px; /* Jarak antar elemen */
+    padding: 6px 12px; /* Ruang di dalam elemen */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Border abu-abu transparan */
+    border-radius: 30px; /* Sudut border melingkar */
 }
 
+/* Gaya untuk menu navigasi */
 .menu {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 10px 20px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 99999px;
+    display: flex; /* Gunakan Flexbox untuk tata letak */
+    align-items: center; /* Pusatkan konten secara vertikal */
+    gap: 20px; /* Jarak antar item menu */
+    padding: 10px 20px; /* Ruang di dalam menu */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Border abu-abu transparan */
+    border-radius: 99999px; /* Border sangat melingkar */
 }
 
+/* Gaya untuk setiap item menu */
 .menu-item {
-    font-weight: 500;
-    text-decoration: none;
-    color: black;
+    font-weight: 500; /* Sedikit tebal */
+    text-decoration: none; /* Hilangkan garis bawah */
+    color: black; /* Warna teks hitam */
 }
 
-/* Hamburger Icon */
+/* Gaya untuk ikon hamburger pada layar kecil */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
+    display: none; /* Tidak terlihat pada layar besar */
+    flex-direction: column; /* Susun garis secara vertikal */
+    gap: 5px; /* Jarak antar garis */
+    cursor: pointer; /* Ganti kursor menjadi pointer */
 }
 
+/* Gaya untuk garis dalam ikon hamburger */
 .hamburger div {
-    width: 25px;
-    height: 2px;
-    background-color: black;
-    border-radius: 5px;
+    width: 25px; /* Panjang garis */
+    height: 2px; /* Ketebalan garis */
+    background-color: black; /* Warna garis hitam */
+    border-radius: 5px; /* Sudut garis melingkar */
 }
 
+/* Gaya untuk latar belakang dengan efek blur */
 .blur-background {
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2); /* Warna putih transparan */
+    backdrop-filter: blur(10px); /* Efek blur */
 }
 
+/* Gaya untuk elemen yang hanya ditampilkan pada layar besar */
 .sm-hidden {
-    display: flex;
+    display: flex; /* Tampilkan sebagai Flexbox */
 }
 
-
-
-
-
-
-
-
-/* Responsiveness */
+/* Responsivitas untuk layar dengan lebar maksimum 768px */
 @media (max-width: 768px) {
+    /* Gaya navbar untuk layar kecil */
     .navbar {
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 99999px;
-        padding: 10px;
-        margin: 10px 16px;
-        justify-content: space-between;
+        border: 1px solid rgba(0, 0, 0, 0.2); /* Border abu-abu transparan */
+        border-radius: 99999px; /* Border sangat melingkar */
+        padding: 10px; /* Ruang dalam navbar */
+        margin: 10px 16px; /* Ruang luar navbar */
+        justify-content: space-between; /* Sebar konten di kedua sisi */
     }
 
+    /* Menu navigasi disembunyikan pada layar kecil */
     .menu {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute;
-        top: 60px;
+        display: none; /* Tidak terlihat */
+        flex-direction: column; /* Susun item secara vertikal */
+        align-items: flex-start; /* Rata kiri */
+        position: absolute; /* Posisi relatif terhadap navbar */
+        top: 60px; /* Jarak dari atas */
         left: 0;
         right: 0;
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: white; /* Warna latar putih */
+        padding: 20px; /* Ruang dalam menu */
+        border-radius: 10px; /* Sudut border melingkar */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
     }
 
+    /* Tampilkan menu saat kelas "open" ditambahkan */
     .menu.open {
-        display: flex;
+        display: flex; /* Tampilkan menu */
     }
 
+    /* Tampilkan ikon hamburger pada layar kecil */
     .hamburger {
-        display: flex;
+        display: flex; /* Tampilkan sebagai Flexbox */
     }
 
+    /* Hapus border pada container logo */
     .logo-container {
         border: none;
     }
 
+    /* Atur ukuran logo untuk layar kecil */
     .logo-container > img {
-        width: 25px;
-        height: 25px;
+        width: 25px; /* Lebar logo */
+        height: 25px; /* Tinggi logo */
     }
 
+    /* Ukuran teks judul pada layar kecil */
     .logo-container .navbar-title {
-        font-size: 14px;
+        font-size: 14px; /* Ukuran font lebih kecil */
     }
 
+    /* Sembunyikan elemen yang hanya untuk layar besar */
     .sm-hidden {
-        display: none;
+        display: none; /* Tidak terlihat */
     }
 }

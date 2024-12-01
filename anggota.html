@@ -122,6 +122,14 @@
             font-size: 20px;  /* Mengatur ukuran font ikon */
             margin: 5px;  /* Memberi jarak antar ikon */
         }
+        /* Efek teks dengan gradien */
+        .typing-gradient {
+            background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin-bottom: 1px;
+        }
     </style>
 </head>
 <body>
@@ -155,7 +163,7 @@
 
     <!-- Konten utama halaman anggota tim -->
     <section class="content-section">
-        <h2>Anggota Tim</h2>
+        <h1 class="typing-gradient anggota-title">Anggota Tim</h1>
         <div class="cards-container">
             <!-- Kartu Anggota 1 -->
             <div class="card">

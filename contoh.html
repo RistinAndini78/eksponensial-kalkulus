@@ -159,6 +159,23 @@
             left: 0;
             box-sizing: border-box;
         }
+        .content {
+    text-align: center; /* Menengahkan teks */
+}
+
+.typing-gradient {
+    background: linear-gradient(90deg, #84A4FC, #2A64FC, #012582, #0A1C60);
+    -webkit-background-clip: text;
+    color: transparent;
+    display: block; /* Pastikan elemen memenuhi lebar parent */
+    margin: 0 auto; /* Menengahkan elemen jika diperlukan */
+}
+
+.contoh-title {
+    font-size: 2rem; /* Sesuaikan ukuran teks */
+    margin: 20px 0; /* Tambahkan margin untuk estetika */
+}
+
     </style>
 </head>
 <body>
@@ -196,7 +213,7 @@
 
     <!-- Konten soal dan jawaban -->
     <div class="content">
-        <h1>Contoh Soal</h1>
+        <h2 class="typing-gradient contoh-title">Contoh Soal</h2>
 
         <!-- Soal 1 -->
         <div class="question">
